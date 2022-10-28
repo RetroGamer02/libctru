@@ -4,8 +4,6 @@
  */
 #pragma once
 
-#include <stddef.h>
-
 /**
  * @brief Allocates a 0x80-byte aligned buffer.
  * @param size Size of the buffer to allocate.

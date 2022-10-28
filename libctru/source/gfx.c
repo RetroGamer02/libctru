@@ -150,7 +150,8 @@ void gfxInit(GSPGPU_FramebufferFormat topFormat, GSPGPU_FramebufferFormat bottom
 	// Present the framebuffers
 	gfxCurBuf[0] = gfxCurBuf[1] = 0;
 	gfxPresentFramebuffer(GFX_TOP, 0, false);
-	gfxPresentFramebuffer(GFX_BOTTOM, 0, false);
+	//Check if console is set to bottom here. Fixme
+	//gfxPresentFramebuffer(GFX_BOTTOM, 0, false);//Note getting close?
 
 	// Wait for VBlank and turn the LCD on
 	gspWaitForVBlank();

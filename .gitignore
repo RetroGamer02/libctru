@@ -9,3 +9,4 @@ docs/
 examples/
 internal_docs
 build.sh
+*.bak

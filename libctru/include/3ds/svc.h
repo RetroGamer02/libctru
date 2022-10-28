@@ -699,7 +699,7 @@ Result svcQueryProcessMemory(MemInfo* info, PageInfo* out, Handle process, u32 a
 Result svcOpenProcess(Handle* process, u32 processId);
 
 /// Exits the current process.
-void svcExitProcess(void) __attribute__((noreturn));
+void __attribute__((noreturn)) svcExitProcess();
 
 /**
  * @brief Terminates a process.
