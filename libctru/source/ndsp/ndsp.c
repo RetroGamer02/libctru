@@ -549,8 +549,13 @@ Result ndspInit(void)
 	ndspInitMaster();
 	ndspUpdateMaster(); // official sw does this upfront, not sure what's the point
 	// TODO: initialize effect params
-
-	ndspThread = threadCreate(ndspThreadMain, 0x0, NDSP_THREAD_STACK_SIZE, 0x18, -2, true);
+	//APT_SetAppCpuTimeLimit(30);
+	_Bool isN3DS;
+    APT_CheckNew3DS(&isN3DS);
+	if(isN3DS)
+		ndspThread = threadCreate(ndspThreadMain, 0x0, NDSP_THREAD_STACK_SIZE, 0x18, 2, true);
+	else
+		ndspThread = threadCreate(ndspThreadMain, 0x0, NDSP_THREAD_STACK_SIZE, 0x18, 0, true);
 	if (!ndspThread) goto _fail3;
 
 	dspHook(&ndspHookCookie, ndspHookCallback);

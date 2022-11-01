@@ -210,7 +210,12 @@ Result aptInit(void)
 
 	// Create APT event handler thread
 	aptEventHandlerThreadQuit = false;
-	aptEventHandlerThread = threadCreate(aptEventHandler, 0x0, APT_HANDLER_STACKSIZE, 0x31, -2, true);
+	//_Bool isN3DS;
+    //APT_CheckNew3DS(&isN3DS);
+	//if(isN3DS)
+		//aptEventHandlerThread = threadCreate(aptEventHandler, 0x0, APT_HANDLER_STACKSIZE, 0x31, 2, true);
+	//else
+		aptEventHandlerThread = threadCreate(aptEventHandler, 0x0, APT_HANDLER_STACKSIZE, 0x31, 0, true);
 	if (!aptEventHandlerThread) goto _fail3;
 
 	// By default allow sleep mode and home button presses
