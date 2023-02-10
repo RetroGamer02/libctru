@@ -10,8 +10,6 @@
 #include <3ds/ipc.h>
 #include <3ds/thread.h>
 
-#include <3ds.h>
-
 #define GSP_EVENT_STACK_SIZE 0x1000
 
 static Handle gspGpuHandle;
@@ -189,9 +187,7 @@ Result gspInit(void)
 	// Start event handling thread
 	gspRunEvents = true;
 	gspLastEvent = -1;
-
-	//APT_SetAppCpuTimeLimit(30);
-	gspEventThread = threadCreate(gspEventThreadMain, 0x0, GSP_EVENT_STACK_SIZE, 0x18, 0, true); //0x1A
+	gspEventThread = threadCreate(gspEventThreadMain, 0x0, GSP_EVENT_STACK_SIZE, 0x1A, -2, true);
 	return 0;
 
 _fail2:
