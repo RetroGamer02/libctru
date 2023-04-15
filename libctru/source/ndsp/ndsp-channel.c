@@ -195,12 +195,12 @@ void ndspChnWaveBufAdd(int id, ndspWaveBuf* buf)
 	if (!buf->nsamples) return;
 
 	LightLock_Lock(&chn->lock);
-	/*if (buf->status == NDSP_WBUF_QUEUED || buf->status == NDSP_WBUF_PLAYING)
+	if (buf->status == NDSP_WBUF_QUEUED || buf->status == NDSP_WBUF_PLAYING)
 	{
 		// Wavebuf is already queued, avoid requeuing it...
 		LightLock_Unlock(&chn->lock);
 		return;
-	}*/
+	}
 	buf->next = NULL;
 	buf->status = NDSP_WBUF_QUEUED;
 	ndspWaveBuf* cb = chn->waveBuf;
