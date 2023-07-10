@@ -52,8 +52,8 @@ void gxCmdQueueInterrupt(GSPGPU_Event irq)
 
 void gxCmdQueueClear(gxCmdQueue_s* queue)
 {
-	if (queue==curQueue && isRunning)
-		svcBreak(USERBREAK_PANIC); // Shouldn't happen.
+	//if (queue==curQueue && isRunning)
+		//svcBreak(USERBREAK_PANIC); // Shouldn't happen but it did.
 	queue->numEntries = 0;
 	queue->curEntry = 0;
 	queue->lastEntry = 0;
@@ -61,8 +61,8 @@ void gxCmdQueueClear(gxCmdQueue_s* queue)
 
 void gxCmdQueueAdd(gxCmdQueue_s* queue, const gxCmdEntry_s* entry)
 {
-	if (queue->numEntries == queue->maxEntries)
-		svcBreak(USERBREAK_PANIC); // Shouldn't happen.
+	//if (queue->numEntries == queue->maxEntries)
+		//svcBreak(USERBREAK_PANIC); // Shouldn't happen but it did.
 	memcpy(&queue->entries[queue->numEntries], entry, sizeof(gxCmdEntry_s));
 	LightLock_Lock(&queueLock);
 	queue->numEntries++;

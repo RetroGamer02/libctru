@@ -10,7 +10,7 @@ include $(DEVKITARM)/base_rules
 
 export LIBCTRU_MAJOR	:= 2
 export LIBCTRU_MINOR	:= 2
-export LIBCTRU_PATCH	:= 0
+export LIBCTRU_PATCH	:= 2
 
 
 VERSION	:=	$(LIBCTRU_MAJOR).$(LIBCTRU_MINOR).$(LIBCTRU_PATCH)
@@ -130,7 +130,7 @@ debug:
 
 lib/libctru.a : lib release $(SOURCES) $(INCLUDES)
 	@$(MAKE) BUILD=release OUTPUT=$(CURDIR)/$@ \
-	BUILD_CFLAGS="-DNDEBUG=1 -O3 -fomit-frame-pointer" \
+	BUILD_CFLAGS="-DNDEBUG=1 -O2 -fomit-frame-pointer" \
 	DEPSDIR=$(CURDIR)/release \
 	--no-print-directory -C release \
 	-f $(CURDIR)/Makefile
